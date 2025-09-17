@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekolah Dasar Nahdlatul Ulama - Pendidikan Berkualitas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* VARIABEL & RESET */
+        :root {
+            --primary: #2e7d32; /* Hijau tua */
+            --secondary: #4caf50; /* Hijau sedang */
+            --accent: #8bc34a; /* Hijau muda */
+            --light: #f1f8e9; /* Hijau sangat muda */
+            --dark: #1b5e20; /* Hijau gelap */
+            --gray: #757575; /* Abu-abu */
+            --success: #388e3c; /* Hijau sukses */
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --radius: 15px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* HEADER & NAVIGASI */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .logo-text span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a.active {
+            color: var(--primary);
+            background-color: rgba(46, 125, 50, 0.1);
+        }
+        
+        nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        /* PAGE CONTENT */
+        .page {
+            display: none;
+            min-height: calc(100vh - 150px);
+            padding: 40px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* HOME PAGE */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 80px 0;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #7cb342;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--dark);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* ABOUT PAGE */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .stat-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .stat-box h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* PROGRAM PAGE */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .program-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .program-content {
+            padding: 25px;
+        }
+        
+        .program-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .program-content ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .program-content li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .program-content li:before {
+            content: "✓";
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* NEWS PAGE */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--accent);
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .news-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .news-content {
+            padding: 25px;
+        }
+        
+        .news-date {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .news-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* NEWS DETAIL PAGE */
+        .news-detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .news-detail-header {
+            padding: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+        
+        .news-detail-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .news-detail-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .news-detail-meta .date {
+            background: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .news-detail-meta .author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .news-detail-image {
+            height: 400px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .news-detail-content {
+            padding: 40px;
+        }
+        
+        .news-detail-content h2 {
+            color: var(--primary);
+            margin: 25px 0 15px;
+            font-size: 1.8rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+        }
+        
+        .news-detail-content p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .news-detail-content blockquote {
+            border-left: 4px solid var(--accent);
+            padding: 15px 0 15px 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: var(--gray);
+            background: #f9fbe7;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        
+        .news-detail-content .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .gallery-image {
+            height: 180px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .back-to-news {
+            display: inline-block;
+            margin-top: 30px;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+        
+        .back-to-news:hover {
+            color: var(--secondary);
+            transform: translateX(-5px);
+        }
+        
+        /* FOOTER */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #e8f5e9;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a5d6a7;
+        }
+        
+        /* RESPONSIVITAS */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-detail-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                gap: 15px;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: var(--transition);
+            }
+            
+            nav ul.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .features,
+            .programs-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-detail-header {
+                padding: 25px;
+            }
+            
+            .news-detail-header h1 {
+                font-size: 2rem;
+            }
+            
+            .news-detail-content {
+                padding: 25px;
+            }
+            
+            .news-detail-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-detail-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigasi -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="img/logo sd.png" alt="SDNU" width="40" height="40"></i>
+                <div class="logo-text">SDNU <span>GURAH</span></div>
+            </div>
+            
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#" class="nav-link active" data-page="home">Beranda</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">Tentang Kami</a></li>
+                    <li><a href="#" class="nav-link" data-page="program">Program</a></li>
+                    <li><a href="#" class="nav-link" data-page="news">Berita</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Halaman Beranda -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="container">
+                <h1>Sekolah Dasar Nahdlatul Ulama</h1>
+                <p>Membentuk generasi unggul melalui pendidikan berkualitas dengan pendekatan ramah lingkungan dan teknologi terkini.</p>
+                <a href="#" class="btn" data-page="program">Lihat Program Kami</a>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Pendidikan Lingkungan</h3>
+                    <p>Kami mengintegrasikan pendidikan lingkungan dalam setiap aspek pembelajaran untuk menumbuhkan kesadaran ekologis.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-solar-panel"></i>
+                    <h3>Sekolah Berkah</h3>
+                    <p>Sekolah kami menggunakan tagline sekolah berkah yang didasar </p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Program Daur Ulang</h3>
+                    <p>Siswa diajarkan pentingnya daur ulang melalui praktik langsung dalam manajemen sampah sekolah.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Halaman Tentang Kami -->
+    <section id="about" class="page">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem; color: var(--primary);">Tentang Sekolah Kami</h2>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    Kampus Sekolah Hijau
+                </div>
+                
+                <div class="about-text">
+                    <h2>Membangun Masa Depan Berkelanjutan</h2>
+                    <p>Sekolah Hijau didirikan pada tahun 2010 dengan misi menyediakan pendidikan berkualitas tinggi yang mengintegrasikan nilai-nilai keberlanjutan dan kepedulian lingkungan. Kami percaya bahwa pendidikan adalah kunci untuk menciptakan masa depan yang lebih baik.</p>
+                    <p>Filosofi pendidikan kami berpusat pada pengembangan karakter, kreativitas, dan tanggung jawab ekologis. Kami menciptakan lingkungan belajar yang inklusif dan mendukung untuk semua siswa.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-box">
+                            <h3>1200+</h3>
+                            <p>Siswa Aktif</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>75+</h3>
+                            <p>Guru Profesional</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>15</h3>
+                            <p>Program Studi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Halaman Program -->
+    <section id="program" class="page">
+        <div class="container">
+            
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem; color: var(--primary); background-image:url(img/logo\ sd.png);">Program Pendidikan</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-image">TK - Pendidikan Anak Usia Dini</div>
+                    <div class="program-content">
+                        <h3>Program TK</h3>
+                        <p>Program untuk anak usia 3-6 tahun dengan pendekatan bermain sambil belajar yang menekankan pada kecintaan terhadap alam.</p>
+                        <ul>
+                            <li>Pengenalan tanaman dan hewan</li>
+                            <li>Pembentukan karakter peduli lingkungan</li>
+                            <li>Kegiatan berkebun mini</li>
+                        </ul>
+                        <a href="#" class="btn" style="margin-top: 15px;">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-image">SD - Sekolah Dasar</div>
+                    <div class="program-content">
+                        <h3>Program SD</h3>
+                        <p>Program pendidikan dasar yang memadukan kurikulum nasional dengan pendidikan lingkungan hidup.</p>
+                        <ul>
+                            <li>Pembelajaran berbasis proyek ekologi</li>
+                            <li>Pengelolaan kebun sekolah</li>
+                            <li>Program daur ulang kreatif</li>
+                        </ul>
+                        <a href="#" class="btn" style="margin-top: 15px;">Daftar Sekarang</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-image">SMP - Sekolah Menengah Pertama</div>
+                    <div class="program-content">
+                        <h3>Program SMP</h3>
+                        <p>Program untuk remaja dengan fokus pada pengembangan akademik dan kesadaran lingkungan melalui berbagai kegiatan.</p>
+                        <ul>
+                            <li>Program STEM lingkungan</li>
+                            <li>Pembelajaran energi terbarukan</li>
+                            <li>Pengembangan kepemimpinan hijau</li>
+                        </ul>
+                        <a href="#" class="btn" style="margin-top: 15px;">Daftar Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Halaman Berita -->
+    <section id="news" class="page">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5rem; color: var(--primary);">Berita Sekolah</h2>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">Penghargaan Sekolah Hijau</div>
+                    <div class="news-content">
+                        <span class="news-date">15 Juli 2025</span>
+                        <h3>Sekolah Kami Raih Penghargaan Sekolah Terhijau 2025</h3>
+                        <p>Sekolah Hijau mendapatkan penghargaan sebagai sekolah terhijau se-provinsi atas komitmennya terhadap pendidikan lingkungan.</p>
+                        <a href="#" class="btn btn-outline" data-news="1">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">Teknologi Hijau</div>
+                    <div class="news-content">
+                        <span class="news-date">8 Juli 2025</span>
+                        <h3>Instalasi Paneel Surya Baru di Atap Sekolah</h3>
+                        <p>Kami telah menyelesaikan instalasi panel surya baru yang akan memenuhi 70% kebutuhan energi sekolah kami.</p>
+                        <a href="#" class="btn btn-outline" data-news="2">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">Kegiatan Siswa</div>
+                    <div class="news-content">
+                        <span class="news-date">1 Juli 2025</span>
+                        <h3>Program Penanaman 1000 Pohon oleh Siswa</h3>
+                        <p>Sebagai bagian dari program pendidikan lingkungan, siswa-siswi kami menanam 1000 pohon di kawasan hutan kota.</p>
+                        <a href="#" class="btn btn-outline" data-news="3">Baca Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Halaman Detail Berita -->
+    <section id="news-detail" class="page">
+        <div class="container">
+            <a href="#" class="back-to-news" data-page="news">
+                <i class="fas fa-arrow-left"></i> Kembali ke Berita
+            </a>
+            
+            <div class="news-detail-container">
+                <div class="news-detail-header">
+                    <h1 id="detail-title">Sekolah Kami Raih Penghargaan Sekolah Terhijau 2025</h1>
+                    <div class="news-detail-meta">
+                        <span class="date" id="detail-date">15 Juli 2025</span>
+                        <span class="author">
+                            <i class="fas fa-user"></i> Penulis: Tim Lingkungan
+                        </span>
+                        <span class="category">
+                            <i class="fas fa-tag"></i> Kategori: Prestasi
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="news-detail-image" id="detail-image">
+                    Penghargaan Sekolah Terhijau
+                </div>
+                
+                <div class="news-detail-content">
+                    <p>Kami dengan bangga mengumumkan bahwa Sekolah Hijau telah mendapatkan penghargaan sebagai "Sekolah Terhijau 2025" tingkat provinsi. Penghargaan ini diberikan oleh Kementerian Lingkungan Hidup atas komitmen dan inovasi sekolah dalam menerapkan pendidikan lingkungan berkelanjutan.</p>
+                    
+                    <h2>Proses Seleksi Ketat</h2>
+                    <p>Penghargaan ini merupakan hasil seleksi ketat selama enam bulan, di mana sekolah kami dinilai berdasarkan berbagai kriteria seperti integrasi pendidikan lingkungan dalam kurikulum, praktik keberlanjutan di lingkungan sekolah, dan dampak program terhadap masyarakat sekitar.</p>
+                    
+                    <p>Kepala Sekolah, Ibu Siti Rahayu, menyatakan: "Penghargaan ini adalah bukti nyata dari kerja keras seluruh warga sekolah dalam mewujudkan visi pendidikan berkelanjutan kami. Ini bukan akhir perjalanan, melainkan awal dari komitmen yang lebih besar."</p>
+                    
+                    <blockquote>
+                        "Sekolah Hijau telah menunjukkan kepemimpinan dalam pendidikan lingkungan. Program mereka menjadi model yang dapat diadopsi sekolah lain di seluruh Indonesia."
+                        <br>- Dr. Bambang Sutrisno, Kepala Dinas Lingkungan Hidup
+                    </blockquote>
+                    
+                    <h2>Program Unggulan</h2>
+                    <p>Beberapa program yang menjadi penilaian utama:</p>
+                    <ul>
+                        <li>Integrasi pendidikan lingkungan dalam 85% mata pelajaran</li>
+                        <li>Sistem pengelolaan sampah terpadu dengan tingkat daur ulang 75%</li>
+                        <li>Penggunaan energi terbarukan untuk 70% kebutuhan sekolah</li>
+                        <li>Kebun sekolah produktif yang menyediakan 30% kebutuhan sayuran kantin</li>
+                        <li>Program edukasi lingkungan untuk masyarakat sekitar</li>
+                    </ul>
+                    
+                    <h2>Galeri Kegiatan</h2>
+                    <div class="image-gallery">
+                        <div class="gallery-image">Kebun Sekolah</div>
+                        <div class="gallery-image">Panel Surya</div>
+                        <div class="gallery-image">Pemilahan Sampah</div>
+                        <div class="gallery-image">Penghargaan</div>
+                    </div>
+                    
+                    <p>Penghargaan ini diserahkan langsung oleh Gubernur Provinsi dalam acara Peringatan Hari Lingkungan Hidup Sedunia. Hadiah yang kami terima akan digunakan untuk mengembangkan laboratorium lingkungan baru yang akan dibuka tahun depan.</p>
+                    
+                    <p>Kami mengucapkan terima kasih kepada seluruh siswa, guru, orang tua, dan masyarakat yang telah mendukung program-program sekolah. Mari kita terus bekerja sama untuk menciptakan lingkungan belajar yang lebih hijau dan berkelanjutan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sekolah Hijau</h3>
+                    <p>Menyediakan pendidikan berkualitas dengan pendekatan ramah lingkungan untuk membentuk generasi yang peduli akan keberlanjutan.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="#" data-page="home">Beranda</a></li>
+                        <li><a href="#" data-page="about">Tentang Kami</a></li>
+                        <li><a href="#" data-page="program">Program Pendidikan</a></li>
+                        <li><a href="#" data-page="news">Berita Sekolah</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Program</h3>
+                    <ul>
+                        <li><a href="#">TK - Pendidikan Anak Usia Dini</a></li>
+                        <li><a href="#">SD - Sekolah Dasar</a></li>
+                        <li><a href="#">SMP - Sekolah Menengah Pertama</a></li>
+                        <li><a href="#">SMA - Sekolah Menengah Atas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Jl. Lingkungan Hijau No. 10, Bandung</li>
+                        <li><i class="fas fa-phone"></i> (022) 9876-5432</li>
+                        <li><i class="fas fa-envelope"></i> info@sekolahhijau.sch.id</li>
+                        <li><i class="fas fa-clock"></i> Senin-Jumat: 07.00 - 16.00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Sekolah Hijau. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data berita
+        const newsData = {
+            1: {
+                title: "Sekolah Kami Raih Penghargaan Sekolah Terhijau 2025",
+                date: "15 Juli 2025",
+                image: "Penghargaan Sekolah Terhijau",
+                content: `
+                    <p>Kami dengan bangga mengumumkan bahwa Sekolah Hijau telah mendapatkan penghargaan sebagai "Sekolah Terhijau 2025" tingkat provinsi. Penghargaan ini diberikan oleh Kementerian Lingkungan Hidup atas komitmen dan inovasi sekolah dalam menerapkan pendidikan lingkungan berkelanjutan.</p>
+                    
+                    <h2>Proses Seleksi Ketat</h2>
+                    <p>Penghargaan ini merupakan hasil seleksi ketat selama enam bulan, di mana sekolah kami dinilai berdasarkan berbagai kriteria seperti integrasi pendidikan lingkungan dalam kurikulum, praktik keberlanjutan di lingkungan sekolah, dan dampak program terhadap masyarakat sekitar.</p>
+                    
+                    <p>Kepala Sekolah, Ibu Siti Rahayu, menyatakan: "Penghargaan ini adalah bukti nyata dari kerja keras seluruh warga sekolah dalam mewujudkan visi pendidikan berkelanjutan kami. Ini bukan akhir perjalanan, melainkan awal dari komitmen yang lebih besar."</p>
+                    
+                    <blockquote>
+                        "Sekolah Hijau telah menunjukkan kepemimpinan dalam pendidikan lingkungan. Program mereka menjadi model yang dapat diadopsi sekolah lain di seluruh Indonesia."
+                        <br>- Dr. Bambang Sutrisno, Kepala Dinas Lingkungan Hidup
+                    </blockquote>
+                    
+                    <h2>Program Unggulan</h2>
+                    <p>Beberapa program yang menjadi penilaian utama:</p>
+                    <ul>
+                        <li>Integrasi pendidikan lingkungan dalam 85% mata pelajaran</li>
+                        <li>Sistem pengelolaan sampah terpadu dengan tingkat daur ulang 75%</li>
+                        <li>Penggunaan energi terbarukan untuk 70% kebutuhan sekolah</li>
+                        <li>Kebun sekolah produktif yang menyediakan 30% kebutuhan sayuran kantin</li>
+                        <li>Program edukasi lingkungan untuk masyarakat sekitar</li>
+                    </ul>
+                    
+                    <h2>Galeri Kegiatan</h2>
+                    <div class="image-gallery">
+                        <div class="gallery-image">Kebun Sekolah</div>
+                        <div class="gallery-image">Panel Surya</div>
+                        <div class="gallery-image">Pemilahan Sampah</div>
+                        <div class="gallery-image">Penghargaan</div>
+                    </div>
+                    
+                    <p>Penghargaan ini diserahkan langsung oleh Gubernur Provinsi dalam acara Peringatan Hari Lingkungan Hidup Sedunia. Hadiah yang kami terima akan digunakan untuk mengembangkan laboratorium lingkungan baru yang akan dibuka tahun depan.</p>
+                    
+                    <p>Kami mengucapkan terima kasih kepada seluruh siswa, guru, orang tua, dan masyarakat yang telah mendukung program-program sekolah. Mari kita terus bekerja sama untuk menciptakan lingkungan belajar yang lebih hijau dan berkelanjutan.</p>
+                `
+            },
+            2: {
+                title: "Instalasi Panel Surya Baru di Atap Sekolah",
+                date: "8 Juli 2025",
+                image: "Panel Surya di Sekolah",
+                content: `
+                    <p>Sekolah Hijau telah menyelesaikan instalasi panel surya baru yang akan memenuhi 70% kebutuhan energi sekolah. Proyek ini merupakan bagian dari komitmen sekolah untuk mencapai netral karbon pada tahun 2030.</p>
+                    
+                    <h2>Teknologi Terkini</h2>
+                    <p>Instalasi baru ini terdiri dari 150 panel surya dengan teknologi bifacial yang mampu menangkap sinar matahari dari kedua sisi panel. Sistem ini dilengkapi dengan:</p>
+                    <ul>
+                        <li>Kapasitas total 50 kWp</li>
+                        <li>Sistem monitoring real-time</li>
+                        <li>Baterai penyimpanan energi 100 kWh</li>
+                        <li>Integrasi dengan sistem kelistrikan sekolah</li>
+                    </ul>
+                    
+                    <p>Dengan instalasi baru ini, sekolah kami diperkirakan dapat mengurangi emisi karbon hingga 35 ton per tahun, setara dengan menanam 800 pohon.</p>
+                    
+                    <h2>Pembelajaran Langsung</h2>
+                    <p>Sistem panel surya ini tidak hanya berfungsi sebagai sumber energi, tetapi juga sebagai media pembelajaran langsung bagi siswa. Beberapa program edukasi yang akan diintegrasikan:</p>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-image">Instalasi Panel</div>
+                        <div class="gallery-image">Sistem Monitoring</div>
+                        <div class="gallery-image">Edukasi Energi</div>
+                        <div class="gallery-image">Siswa Belajar</div>
+                    </div>
+                    
+                    <p>Siswa akan mempelajari prinsip kerja energi surya, cara menghitung efisiensi energi, dan pentingnya transisi ke energi bersih melalui proyek-proyek praktis. "Ini adalah laboratorium hidup yang luar biasa," kata Pak Andi, guru fisika kami.</p>
+                    
+                    <blockquote>
+                        "Dengan sistem ini, siswa dapat melihat langsung bagaimana energi matahari diubah menjadi listrik dan memahami pentingnya energi terbarukan untuk masa depan."
+                        <br>- Pak Andi, Guru Fisika
+                    </blockquote>
+                    
+                    <h2>Dampak Jangka Panjang</h2>
+                    <p>Selain manfaat edukasi, proyek ini juga akan mengurangi biaya operasional sekolah sebesar 40% per tahun. Dana yang dihemat akan dialokasikan untuk program beasiswa siswa berprestasi dari keluarga kurang mampu.</p>
+                    
+                    <p>Kami berencana untuk memperluas sistem ini tahun depan dengan menambah kapasitas penyimpanan energi dan mengintegrasikan turbin angin kecil di area sekolah.</p>
+                `
+            },
+            3: {
+                title: "Program Penanaman 1000 Pohon oleh Siswa",
+                date: "1 Juli 2025",
+                image: "Penanaman Pohon oleh Siswa",
+                content: `
+                    <p>Sebagai bagian dari program pendidikan lingkungan, siswa-siswi Sekolah Hijau melakukan penanaman 1000 pohon di kawasan hutan kota pada tanggal 30 Juni 2025. Kegiatan ini melibatkan 300 siswa dari berbagai jenjang pendidikan.</p>
+                    
+                    <h2>Komitmen terhadap Lingkungan</h2>
+                    <p>Kegiatan penanaman pohon ini merupakan inisiatif OSIS Sekolah Hijau yang bertujuan untuk:</p>
+                    <ul>
+                        <li>Meningkatkan kesadaran lingkungan siswa</li>
+                        <li>Mengurangi dampak perubahan iklim</li>
+                        <li>Menciptakan ruang hijau di perkotaan</li>
+                        <li>Mengajarkan tanggung jawab ekologis</li>
+                    </ul>
+                    
+                    <p>Jenis pohon yang ditanam meliputi pohon buah-buahan lokal seperti mangga, jambu, dan rambutan, serta pohon peneduh seperti trembesi dan mahoni.</p>
+                    <p>Segala hal mencakup penghijauan telah diajarkan pada anak sejak usi dini sehingga dapat menjadi bekal experience untuk belajar melakukan penanaman mandiri dalam hal melakukanpenghijauan lingkungan, bersamaan dengan proser reqistry yang tercakup didalamnya.</p>
+                    
+                    <h2>Proses Kegiatan</h2>
+                    <p>Kegiatan dimulai pukul 07.00 pagi dengan pembagian kelompok dan bibit pohon. Setiap kelompok terdiri dari 5 siswa yang didampingi oleh seorang guru. "Kami sangat antusias dengan kegiatan ini karena bisa langsung berkontribusi untuk lingkungan," ujar Rudi, ketua OSIS.</p>
+                    
+                    <div class="image-gallery">
+                        <div class="gallery-image">Persiapan Penanaman</div>
+                        <div class="gallery-image">Siswa Menanam Pohon</div>
+                        <div class="gallery-image">Pemberian Pupuk</div>
+                        <div class="gallery-image">Foto Bersama</div>
+                    </div>
+                    
+                    <p>Selain menanam pohon, siswa juga melakukan kegiatan:</p>
+                    <ul>
+                        <li>Pembersihan sampah di sekitar area</li>
+                        <li>Pembuatan lubang biopori</li>
+                        <li>Edukasi pengelolaan sampah kepada warga</li>
+                    </ul>
+                    
+                    <blockquote>
+                        "Kegiatan ini bukan sekadar seremonial. Siswa akan melakukan pemantauan rutin selama satu tahun untuk memastikan pohon yang ditanam tumbuh dengan baik."
+                        <br>- Ibu Dewi, Guru Pembina OSIS
+                    </blockquote>
+                    
+                    <h2>Dampak Jangka Panjang</h2>
+                    <p>Program ini merupakan bagian dari komitmen Sekolah Hijau terhadap pendidikan berkelanjutan. Dalam setahun, pohon-pohon ini diperkirakan dapat menyerap sekitar 20 ton karbon dioksida.</p>
+                    
+                    <p>Kegiatan serupa akan dilakukan setiap semester sebagai bentuk tanggung jawab sosial sekolah terhadap lingkungan. "Kami berharap kegiatan ini menginspirasi sekolah lain untuk melakukan hal serupa," tutup Ibu Siti Rahayu, Kepala Sekolah.</p>
+                `
+            }
+        };
+
+        // Navigasi antar halaman
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link, .footer-column a, .back-to-news');
+            const pages = document.querySelectorAll('.page');
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            // Fungsi untuk mengganti halaman
+            function showPage(pageId) {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update active link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+                
+                const activeLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+                
+                // Tutup menu hamburger jika terbuka
+                navMenu.classList.remove('active');
+                
+                // Scroll ke atas
+                window.scrollTo(0, 0);
+            }
+            
+            // Event listener untuk navigasi
+            navLinks.forEach(link => {
+                if (link.dataset.page) {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        showPage(this.dataset.page);
+                    });
+                }
+            });
+            
+            // Event listener untuk berita
+            document.querySelectorAll('[data-news]').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const newsId = this.dataset.news;
+                    const news = newsData[newsId];
+                    
+                    // Update konten detail berita
+                    document.getElementById('detail-title').textContent = news.title;
+                    document.getElementById('detail-date').textContent = news.date;
+                    document.getElementById('detail-image').textContent = news.image;
+                    document.querySelector('.news-detail-content').innerHTML = news.content;
+                    
+                    // Tampilkan halaman detail berita
+                    showPage('news-detail');
+                });
+            });
+            
+            // Hamburger menu toggle
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Halaman pertama yang ditampilkan
+            showPage('home');
+            
+            // Animasi scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+        });
+    </script>
+</body>
+</html>
