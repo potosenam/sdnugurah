@@ -882,17 +882,6 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .map-placeholder {
-            width: 100%;
-            height: 100%;
-            background-color: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 1.1rem;
-        }
-
         /* Footer */
         footer {
             background-color: var(--primary);
@@ -1083,10 +1072,15 @@
                     <div class="slide" style="background-image: url('img/g4.jpg');"></div>
                     <div class="slide" style="background-image: url('img/g5.jpg');"></div>
                 </div>
-                    <div class="hero-overlay">
-                    <a href="https://s.id/spmb_sdnugurah_2026" class="cta-button" target="_blank">Daftar Sekarang</a>
+                <div class="hero-overlay">
+                    <div class="hero-content">
+                        <h1>SD Nahdlatul Ulama Gurah</h1>
+                        <p>Lembaga pendidikan dasar berstatus swasta di Gurah, Kediri, Jawa Timur, dengan fokus pada pembelajaran yang kondusif, tenang, dan nyaman, serta menanamkan nilai moral, sosial, dan spiritual. Berupaya membentuk peserta didik yang cerdas, berakhlak mulia, dan siap menghadapi tantangan masa depan melalui kegiatan pembelajaran, ekstrakurikuler, dan pembiasaan positif.</p>
+                        <!-- TOMOL DAFTAR SEKARANG (Langsung ke Google Forms) -->
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc5wJqO9CKgtppXzw6P-SFT6WGT7WDYVxFTFy9rQEawV_qmYQ/viewform" class="cta-button" target="_blank">Daftar Sekarang</a>
                     </div>
                 </div>
+            </div>
 
             <div class="container">
                 <div class="vision-mission">
@@ -1339,7 +1333,7 @@
             </div>
         </section>
 
-        <!-- BERITA Page (Modifikasi: background hero g1.jpg, gambar g1,g2,g3, modal full layer) -->
+        <!-- BERITA Page -->
         <section id="berita" class="page">
             <div class="page-hero" style="background-image: url('img/g1.jpg'); background-size: cover; background-position: center;">
                 <div class="page-hero-overlay">
@@ -1352,7 +1346,6 @@
 
             <div class="container">
                 <div class="news-grid">
-                    <!-- Berita 1: gambar g1.jpg -->
                     <div class="news-card" data-img="img/g1.jpg" data-title="Siswa SDNU Gurah Raih Juara Olimpiade Matematika">
                         <div class="news-image">
                             <img src="img/g1.jpg" alt="Juara Olimpiade Matematika">
@@ -1364,7 +1357,6 @@
                             <a href="#" class="read-more" data-news="1">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <!-- Berita 2: gambar g2.jpg -->
                     <div class="news-card" data-img="img/g2.jpg" data-title="Tim Drumband SDNU Gurah Tampil Memukau">
                         <div class="news-image">
                             <img src="img/g2.jpg" alt="Drumband">
@@ -1376,7 +1368,6 @@
                             <a href="#" class="read-more" data-news="2">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <!-- Berita 3: gambar g3.jpg -->
                     <div class="news-card" data-img="img/g3.jpg" data-title="Perpustakaan SDNU Gurah Terima Penghargaan">
                         <div class="news-image">
                             <img src="img/g3.jpg" alt="Perpustakaan">
@@ -1459,7 +1450,7 @@
             </div>
         </section>
 
-        <!-- Kontak Page -->
+        <!-- KONTAK Page (ditambahkan tombol Daftar Sekarang) -->
         <section id="kontak" class="page">
             <div class="page-hero" style="background-image: url('img/g1.jpg'); background-size: cover; background-position: center;">
                 <div class="page-hero-overlay">
@@ -1489,16 +1480,20 @@
                             <h3>Media Sosial</h3>
                             <div class="social-icons">
                                 <a href="mailto:sdnu3kdr@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                                <a href="https://www.youtube.com/@sdnahdlatululamagurah4742" class="social-icon"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.instagram.com/sdnahdlatululama_gurah/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/sdnu.kediri" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.tiktok.com/@sd.nahdlatul.ulama?_r=1&_t=ZS-95HqwzdSFM7" class="social-icon"><i class="fab fa-tiktok"></i></a>
                                 <a href="https://wa.me/6285141222203" class="social-icon"><i class="fab fa-whatsapp"></i></a>
                             </div>
                         </div>
+                        <!-- TOMBOL DAFTAR SEKARANG DI HALAMAN KONTAK -->
+                        <div style="text-align: center; margin-top: 30px;">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc5wJqO9CKgtppXzw6P-SFT6WGT7WDYVxFTFy9rQEawV_qmYQ/viewform" class="cta-button" target="_blank" style="display: inline-block;">Daftar Sekarang</a>
+                        </div>
                     </div>
                     <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.835775045662!2d112.0951147!3d-7.8072036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78599fe161d6f1%3A0xc0026e6886acff44!2sSDNU%20GURAH!5e0!3m2!1sen!2sid!4v1775379467877!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.835775045662!2d112.0951147!3d-7.8072036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78599fe161d6f1%3A0xc0026e6886acff44!2sSDNU%20GURAH!5e0!3m2!1sen!2sid!4v1775379467877!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -1606,7 +1601,7 @@
         readMoreButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                e.stopPropagation(); // Mencegah event bubbling ke news-card
+                e.stopPropagation();
                 const newsId = btn.getAttribute('data-news');
                 const news = beritaData[newsId];
                 if (news) {
@@ -1619,7 +1614,7 @@
             });
         });
 
-        // ========== MODAL FULL LAYER UNTUK SEMUA ELEMEN YANG DAPAT DIKLIK ==========
+        // Modal Full Layer
         const fullModal = document.getElementById('fullImageModal');
         const fullModalImage = document.getElementById('fullModalImage');
         const closeFullModal = document.querySelector('.close-modal-full');
@@ -1645,7 +1640,7 @@
             if (e.key === 'Escape' && fullModal.style.display === 'flex') closeFullModalFunc();
         });
 
-        // Event listener untuk item pengumuman
+        // Event listeners untuk klik gambar
         const announcementItems = document.querySelectorAll('.announcement-item');
         announcementItems.forEach(item => {
             item.addEventListener('click', (e) => {
@@ -1655,7 +1650,6 @@
             });
         });
         
-        // Event listener untuk item sarana fisik (facility-item)
         const facilityItems = document.querySelectorAll('.facility-item');
         facilityItems.forEach(item => {
             item.addEventListener('click', (e) => {
@@ -1665,7 +1659,6 @@
             });
         });
 
-        // Event listener untuk item ekstrakurikuler (card di program)
         const extraCards = document.querySelectorAll('.extracurricular-card');
         extraCards.forEach(card => {
             card.addEventListener('click', (e) => {
@@ -1675,11 +1668,9 @@
             });
         });
 
-        // Event listener untuk kartu berita (jika diklik di area selain tombol read-more)
         const newsCards = document.querySelectorAll('.news-card');
         newsCards.forEach(card => {
             card.addEventListener('click', (e) => {
-                // Jangan tampilkan modal jika yang diklik adalah tombol read-more atau di dalamnya
                 if (e.target.closest('.read-more')) return;
                 const imgSrc = card.getAttribute('data-img');
                 const title = card.getAttribute('data-title') || 'Berita';
